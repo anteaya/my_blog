@@ -1,0 +1,54 @@
+These are my notes for working with one of the exercises from http://www.railsupgradehandbook.com/
+written by Jeremy McAnally
+which is a great book, I just find that sometimes I need a little bit more explaination.
+
+I read the book in 2 hours, and found myself frustrated working through the exercises. I realized that some of the mistakes I was making were my own dumb mistakes. So that you don't waste your time as well, here are some useful steps I have found.
+
+I use the rvm gem: http://rvm.beginrescueend.com/
+
+and so requested ruby 1.8.7 to use for the Upgrade Handbook exercises.
+
+Initially I had tried 1.9.2-preview1 but found I was wasting time mapping uncharted territory, which I found too overwhelming. So I went to 1.8.7 and was much happier.
+
+rvm use 1.8.7 #this will switch to 1.8.7 if you have it or give you instructions to install it, if you don't
+
+The Rails 3 Upgrade Handbook comes with a copy of an app called perwikity which is an example of an app which has been taken through the upgrade process. It is the finished product. Somehow I had missed that and wasted a bit of time trying the upgrade steps on and already upgraded app. Fortunately you don't have to make that mistake as well.
+
+If you are currently in the directory with the perwikity app that comes with the book, I suggest you rename it. I found it helpful.
+mv perwikity perwikity_rails3
+
+Then clone the git repo of Jeremy's perwikity app which is still running on rails 2.
+git clone git://github.com/jm/perwikity.git perwikity_rails2
+
+So now you should have an app called perwikity_rails2 which you can work on to practices the upgrade process to rails 3.
+
+cd perwikity_rails2
+
+Next upgrade your rubygem version if it is not yet 1.3.6. Bundler won't work with rubygems that aren't the latest version.
+
+gem update --system
+
+Also if you don't yet have the dev libs for your database of choice you will need them:
+sudo apt-get install libmysqlclient15-dev
+sudo apt-get install libsqlite0-dev
+
+Ensure you have the db gems:
+gem install mysql
+gem install sqlite3-ruby
+
+Now for Rails 3.
+Rails 3 has a bunch of dependancies which should install with:
+gem install rails3b
+
+Then install rails 3 with:
+gem install rails --pre
+
+Jeremy's instructions use Jeremy's rails_upgrade plugin, which likes rails 2.2.2
+gem install rails -v=2.2.2
+
+Then get the plugin with:
+
+script/plugin install git://github.com/rails/rails_upgrade.git
+
+That should put you in a position to follow the rest of the upgrade instructions in the book.
+
