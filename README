@@ -1,3 +1,15 @@
+tl;dr
+rvm use 1.8.7
+gem update --system
+gem install rails3b
+gem install rails --pre
+gem install railties --pre
+bundle install
+
+you may like Jeremy's rails_upgrade plugin.
+gem install rails -v=2.2.2
+script/plugin install git://github.com/rails/rails_upgrade.git
+
 These are my notes for working with one of the exercises from http://www.railsupgradehandbook.com/
 written by Jeremy McAnally
 which is a great book, I just find that sometimes I need a little bit more explaination.
@@ -18,11 +30,9 @@ If you are currently in the directory with the perwikity app that comes with the
 mv perwikity perwikity_rails3
 
 Then clone the git repo of Jeremy's perwikity app which is still running on rails 2.
-git clone git://github.com/jm/perwikity.git perwikity_rails2
+git clone git://github.com/jm/perwikity.git
 
-So now you should have an app called perwikity_rails2 which you can work on to practices the upgrade process to rails 3.
-
-cd perwikity_rails2
+cd perwikity
 
 Next upgrade your rubygem version if it is not yet 1.3.6. Bundler won't work with rubygems that aren't the latest version.
 
@@ -49,6 +59,17 @@ gem install rails -v=2.2.2
 Then get the plugin with:
 
 script/plugin install git://github.com/rails/rails_upgrade.git
+
+You will also need railites:
+gem install railties --pre
+
+also rails . becomes
+rails application .
+
+And you will need to use:
+bundle install
+
+you can use bundle check first to see what will be installed when you run bundle install if you wish
 
 That should put you in a position to follow the rest of the upgrade instructions in the book.
 
